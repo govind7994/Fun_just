@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Repeat Word Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    input, select {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #0077ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005ec4;
+    }
+
+    .output {
+      margin-top: 20px;
+      text-align: left;
+      white-space: pre-wrap;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Repeat Word Generator</h2>
+    <input type="text" id="wordInput" placeholder="Enter a word" />
+    <input type="number" id="countInput" placeholder="How many times?" min="1" max="100" />
+    <br />
+    <button onclick="generateWords()">Generate</button>
+    <div class="output" id="outputArea"></div>
+  </div>
+
+  <script>
+    function generateWords() {
+      const word = document.getElementById("wordInput").value.trim();
+      const count = parseInt(document.getElementById("countInput").value);
+      const output = document.getElementById("outputArea");
+
+      if (!word || isNaN(count) || count <= 0) {
+        output.textContent = "Please enter a valid word and number.";
+        return;
+      }
+
+      let result = "";
+      for (let i = 0; i < count; i++) {
+        result += `${i + 1}. ${word}\n`;
+      }
+
+      output.textContent = result;
+    }
+  </script>
+
+</body>
+</html>
